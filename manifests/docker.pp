@@ -38,8 +38,8 @@ class vision_webshop::docker (
     ],
     ports   => [ '80:80' ],
     volumes => [
-      '/data/resources:/var/html/www/resources',
-      '/data/logs:/var/html/wwww/logs'
+      '/data/resources:/var/www/html/resources',
+      '/data/logs:/var/www/html/logs'
     ]
   }
 
