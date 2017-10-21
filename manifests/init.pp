@@ -40,6 +40,8 @@ class vision_webshop (
 
   file { ['/data', '/data/logs', '/data/resources']:
     ensure => directory,
+    owner  => 'www-data',
+    group  => 'www-data',
   }
 
 }
