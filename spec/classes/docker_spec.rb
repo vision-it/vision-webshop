@@ -19,7 +19,7 @@ describe 'vision_webshop::docker' do
       end
       context 'contains' do
         it { is_expected.to contain_class('vision_docker') }
-        it { is_expected.to contain_docker__image('webshop').with_image_tag('master') }
+        it { is_expected.to contain_docker__image('webshop').with_image_tag('latest') }
       end
     end
   end

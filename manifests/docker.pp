@@ -25,11 +25,11 @@ class vision_webshop::docker (
   ::docker::image { 'webshop':
     ensure    => present,
     image     => 'vision.fraunhofer.de/webshop',
-    image_tag => 'master',
+    image_tag => 'latest',
   }
 
   ::docker::run { 'webshop':
-    image   => 'vision.fraunhofer.de/webshop:master',
+    image   => 'vision.fraunhofer.de/webshop:latest',
     env     => [
       "DB_HOST=${mysql_host}",
       "DB_DATABASE=${mysql_database}",
