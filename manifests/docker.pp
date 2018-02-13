@@ -17,19 +17,18 @@ class vision_webshop::docker (
   String $mysql_password  = $vision_webshop::mysql_password,
   String $mysql_user      = $vision_webshop::mysql_user,
   String $mysql_host      = $vision_webshop::mysql_host,
+  String $webshop_tag     = lookup('::webshop_tag', String, 'first', 'latest'),
 
 ) {
-
-  contain ::vision_docker
 
   ::docker::image { 'webshop':
     ensure    => present,
     image     => 'vision.fraunhofer.de/webshop',
-    image_tag => 'latest',
+    image_tag => $webshop_tag,
   }
 
   ::docker::run { 'webshop':
-    image   => 'vision.fraunhofer.de/webshop:latest',
+    image   => "vision.fraunhofer.de/webshop:${webshop_tag}",
     env     => [
       "DB_HOST=${mysql_host}",
       "DB_DATABASE=${mysql_database}",

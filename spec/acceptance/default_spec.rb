@@ -8,8 +8,12 @@ describe 'vision_webshop' do
         file { '/vision':
           ensure => directory,
         }
+        group { 'docker':
+          ensure => present,
+        }
 
         class vision_webshop::docker () {}
+        class vision::docker () {}
 
         class { 'vision_webshop': }
       EOS
