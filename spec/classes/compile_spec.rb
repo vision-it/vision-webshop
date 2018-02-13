@@ -12,6 +12,8 @@ describe 'vision_webshop' do
         it { is_expected.to compile.with_all_deps }
       end
       context 'contains' do
+        it { is_expected.to contain_class('vision_jenkins::user') }
+        it { is_expected.to contain_class('vision_docker') }
         it { is_expected.to contain_class('vision_webshop::docker') }
       end
     end
