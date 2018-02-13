@@ -3,7 +3,7 @@ require 'spec_helper_acceptance'
 describe 'vision_webshop' do
   context 'with defaults' do
     it 'run idempotently' do
-      pp = <<-EOS
+      pp = <<-FILE
 
         file { '/vision':
           ensure => directory,
@@ -16,7 +16,7 @@ describe 'vision_webshop' do
         class vision::docker () {}
 
         class { 'vision_webshop': }
-      EOS
+      FILE
 
       apply_manifest(pp, catch_failures: true)
       apply_manifest(pp, catch_changes: true)
