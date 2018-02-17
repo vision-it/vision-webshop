@@ -13,7 +13,7 @@ describe 'vision_webshop' do
         }
 
         class vision_webshop::docker () {}
-        class vision::docker () {}
+        class vision_docker () {}
 
         class { 'vision_webshop': }
       FILE

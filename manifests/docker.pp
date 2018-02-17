@@ -17,9 +17,14 @@ class vision_webshop::docker (
   String $mysql_password  = $vision_webshop::mysql_password,
   String $mysql_user      = $vision_webshop::mysql_user,
   String $mysql_host      = $vision_webshop::mysql_host,
-  String $webshop_tag     = lookup('::webshop_tag', String, 'first', 'latest'),
 
 ) {
+
+  if ($facts['webshop_tag'] == undef) {
+    $webshop_tag = 'latest'
+    } else {
+      $webshop_tag = $facts['webshop_tag']
+  }
 
   ::docker::image { 'webshop':
     ensure    => present,
