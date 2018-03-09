@@ -11,7 +11,7 @@ fixtures:
       ref: "v2.0.1"
       repo: "https://github.com/voxpupuli/puppet-staging"
     docker:
-      ref: "1.0.4"
+      ref: "1.0.5"
       repo: "https://github.com/puppetlabs/puppetlabs-docker"
     apt:
       ref: "4.2.0"
