@@ -20,6 +20,8 @@ class vision_webshop::docker (
 
 ) {
 
+  contain ::vision_docker
+
   if ($facts['webshop_tag'] == undef) {
     $webshop_tag = 'latest'
     } else {
