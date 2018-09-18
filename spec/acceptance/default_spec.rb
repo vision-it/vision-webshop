@@ -28,12 +28,27 @@ describe 'vision_webshop' do
       it { is_expected.to be_installed }
     end
   end
-  context 'test hiera data' do
+
+
+  context 'Jenkins user and service' do
+    describe user('jenkins') do
+      it { is_expected.to exist }
+      it { is_expected.to have_uid 50_000 }
+    end
+
+    describe file('/etc/systemd/system/webshop_tag.service') do
+      it { is_expected.to be_file }
+    end
+  end
+
+  context 'files deployed' do
     describe file('/data/logs') do
       it { is_expected.to be_directory }
+      it { is_expected.to be_owned_by 'www-data' }
     end
     describe file('/data/resources') do
       it { is_expected.to be_directory }
+      it { is_expected.to be_owned_by 'www-data' }
     end
   end
 end
