@@ -18,6 +18,7 @@ class vision_webshop::docker (
   String $mysql_user      = $vision_webshop::mysql_user,
   String $mysql_host      = $vision_webshop::mysql_host,
   Integer $port           = $vision_webshop::port,
+  Array[String] $docker_volumes = $vision_webshop::docker_volumes,
 
 ) {
 
@@ -44,10 +45,7 @@ class vision_webshop::docker (
       "DB_PASSWORD=${mysql_password}",
     ],
     ports   => [ "${port}:80" ],
-    volumes => [
-      '/data/resources:/var/www/html/resources',
-      '/data/logs:/var/www/html/logs'
-    ]
+    volumes => $docker_volumes,
   }
 
 }

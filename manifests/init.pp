@@ -20,6 +20,7 @@ class vision_webshop (
   String $mysql_user,
   String $mysql_host = $::fqdn,
   Integer $port = 80,
+  Array[String] $docker_volumes = [],
 
 ) {
 
