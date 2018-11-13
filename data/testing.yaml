@@ -8,3 +8,4 @@ vision_webshop::docker::mysql_user: 'foobar'
 vision_webshop::docker::mysql_password: 'foobar'
 vision_webshop::docker::mysql_database: 'foobar'
 vision_webshop::docker::mysql_host: 'foobar'
+vision_webshop::docker::port: 8080

@@ -18,7 +18,8 @@ class vision_webshop (
   String $mysql_password,
   String $mysql_root_password,
   String $mysql_user,
-  String $mysql_host = $::fqdn
+  String $mysql_host = $::fqdn,
+  Integer $port = 80,
 
 ) {
 
