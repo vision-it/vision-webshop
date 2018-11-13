@@ -1,0 +1,21 @@
+#!/bin/sh
+set -e
+
+HOST=webshop
+
+echo "Syncing latest data from webshop..."
+rsync \
+    --update \
+    --append-verify \
+    --delete \
+    --compress \
+    --archive \
+    --exclude='*logs/*.log' \
+    "$HOST:/data" "/opt/webshop"
+echo "OK"
+# TODO: verify certain folders are present
+
+echo "Fetching and importing latest dump of DB 'webshop'..."
+ssh $HOST 'cat $(ls -t /vision/db-backup/mysql_backup_webshop_*.sql.bz2 | head -n1)' | bzcat --decompress --stdout | mysql webshop
+echo "OK"
+

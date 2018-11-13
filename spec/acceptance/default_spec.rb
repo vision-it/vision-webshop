@@ -50,5 +50,12 @@ describe 'vision_webshop' do
       it { is_expected.to be_directory }
       it { is_expected.to be_owned_by 'www-data' }
     end
+    describe file('/usr/local/sbin/sync-webshop.sh') do
+      it { is_expected.to be_file }
+      it { is_expected.to be_owned_by 'root' }
+      it { is_expected.to be_mode 750 }
+      its(:content) { is_expected.to match 'webshop' }
+      its(:content) { is_expected.to match 'rsync' }
+    end
   end
 end

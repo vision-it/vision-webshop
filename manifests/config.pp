@@ -28,4 +28,11 @@ class vision_webshop::config (
     group  => 'www-data',
   }
 
+  file { '/usr/local/sbin/sync-webshop.sh':
+    ensure  => present,
+    owner   => 'root',
+    mode    => '0750',
+    content => template('vision_webshop/sync-webshop.sh.erb'),
+  }
+
 }
