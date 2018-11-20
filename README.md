@@ -9,7 +9,7 @@
 
 # vision-webshop
 
-[![Build Status](https://travis-ci.org/vision-it/vision-webshop.svg?branch=development)](https://travis-ci.org/vision-it/vision-webshop)
+[![Build Status](https://travis-ci.org/vision-it/vision-webshop.svg)](https://travis-ci.org/vision-it/vision-webshop)
 
 ## Parameter
 
