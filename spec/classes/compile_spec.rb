@@ -5,8 +5,12 @@ describe 'vision_webshop' do
   on_supported_os.each do |os, facts|
     context "on #{os}" do
       let(:facts) do
-        facts.merge(root_home: '/root')
+        facts.merge(
+          root_home: '/root',
+          applicationtier: 'production'
+        )
       end
+
       # Default check to see if manifest compiles
       context 'compile' do
         it { is_expected.to compile.with_all_deps }
