@@ -16,10 +16,10 @@ class vision_webshop (
   String $mysql_database,
   String $mysql_password,
   String $mysql_user,
+  String $mysql_root_password,
   String $mysql_host = $::fqdn,
   Integer $port = 80,
-  Optional[String] $mysql_root_password,
-  Optional[String] $backup_password,
+  Optional[String] $backup_password = undef,
   Array[String] $docker_volumes = [],
 
 ) {

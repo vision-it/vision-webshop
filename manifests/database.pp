@@ -17,7 +17,7 @@ class vision_webshop::database (
   String $mysql_password = $vision_webshop::mysql_password,
   String $mysql_user = $vision_webshop::mysql_user,
   String $mysql_host = $vision_webshop::mysql_host,
-  Optional[String] $mysql_root_password = $vision_webshop::mysql_root_password,
+  String $mysql_root_password = $vision_webshop::mysql_root_password,
   Optional[String] $backup_password = $vision_webshop::backup_password
 
   ) {
