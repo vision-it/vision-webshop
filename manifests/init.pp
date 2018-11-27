@@ -21,6 +21,7 @@ class vision_webshop (
   Integer $port = 80,
   Optional[String] $backup_password = undef,
   Array[String] $docker_volumes = [],
+  Array[String] $environment = [],
 
 ) {
 

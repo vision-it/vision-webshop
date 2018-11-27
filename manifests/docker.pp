@@ -19,6 +19,7 @@ class vision_webshop::docker (
   String $mysql_host      = $vision_webshop::mysql_host,
   Integer $port           = $vision_webshop::port,
   Array[String] $docker_volumes = $vision_webshop::docker_volumes,
+  Array[String] $environment = $vision_webshop::environment,
 
 ) {
 
@@ -36,14 +37,16 @@ class vision_webshop::docker (
     image_tag => $webshop_tag,
   }
 
+  $docker_environment = concat([
+    "DB_HOST=${mysql_host}",
+    "DB_DATABASE=${mysql_database}",
+    "DB_USERNAME=${mysql_user}",
+    "DB_PASSWORD=${mysql_password}",
+  ], $environment)
+
   ::docker::run { 'webshop':
     image   => "vision.fraunhofer.de/webshop:${webshop_tag}",
-    env     => [
-      "DB_HOST=${mysql_host}",
-      "DB_DATABASE=${mysql_database}",
-      "DB_USERNAME=${mysql_user}",
-      "DB_PASSWORD=${mysql_password}",
-    ],
+    env     => $docker_environment,
     ports   => [ "${port}:80" ],
     volumes => $docker_volumes,
   }

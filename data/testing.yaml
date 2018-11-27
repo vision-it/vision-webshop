@@ -10,3 +10,4 @@ vision_webshop::docker::mysql_database: 'foobar'
 vision_webshop::docker::mysql_host: 'foobar'
 vision_webshop::docker::port: 8080
 vision_webshop::docker::docker_volumes: []
+vision_webshop::docker::environment: ["FOO=BAR"]

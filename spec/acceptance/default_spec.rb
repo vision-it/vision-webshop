@@ -29,7 +29,6 @@ describe 'vision_webshop' do
     end
   end
 
-
   context 'Jenkins user and service' do
     describe user('jenkins') do
       it { is_expected.to exist }
