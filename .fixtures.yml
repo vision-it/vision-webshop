@@ -5,16 +5,16 @@ fixtures:
       ref: "4.24.0"
       repo: "https://github.com/puppetlabs/puppetlabs-stdlib"
     mysql:
-      ref: "3.11.0"
+      ref: "5.4.0"
       repo: "https://github.com/puppetlabs/puppetlabs-mysql"
     staging:
       ref: "v2.0.1"
       repo: "https://github.com/voxpupuli/puppet-staging"
     docker:
-      ref: "1.0.5"
+      ref: "3.3.0"
       repo: "https://github.com/puppetlabs/puppetlabs-docker"
     apt:
-      ref: "4.2.0"
+      ref: "5.0.1"
       repo: "https://github.com/puppetlabs/puppetlabs-apt"
     vision_mysql:
       ref: "origin/production"
