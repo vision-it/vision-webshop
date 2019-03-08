@@ -5,13 +5,10 @@ fixtures:
       ref: "4.24.0"
       repo: "https://github.com/puppetlabs/puppetlabs-stdlib"
     mysql:
-      ref: "5.4.0"
+      ref: "7.0.0"
       repo: "https://github.com/puppetlabs/puppetlabs-mysql"
-    staging:
-      ref: "v2.0.1"
-      repo: "https://github.com/voxpupuli/puppet-staging"
     docker:
-      ref: "3.3.0"
+      ref: "3.4.0"
       repo: "https://github.com/puppetlabs/puppetlabs-docker"
     apt:
       ref: "5.0.1"
