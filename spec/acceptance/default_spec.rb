@@ -5,7 +5,7 @@ describe 'vision_webshop' do
     it 'run idempotently' do
       pp = <<-FILE
 
-        file { '/vision':
+        file { ['/vision', '/vision/data/', '/vision/data/swarm']:
           ensure => directory,
         }
         group { 'docker':
@@ -20,9 +20,10 @@ describe 'vision_webshop' do
           content => 'case "$1" in *) exit 0 ;; esac'
         }}
 
-        class vision_webshop::docker () {}
         class vision_webshop::database () {}
-        class vision_docker () {}
+        class vision_docker::swarm () {}
+        class vision_mysql::mariadb () {}
+        class vision_gluster::node () {}
 
         class { 'vision_webshop': }
       FILE
@@ -44,11 +45,11 @@ describe 'vision_webshop' do
   end
 
   context 'files deployed' do
-    describe file('/data/logs') do
+    describe file('/vision/data/webshop/logs') do
       it { is_expected.to be_directory }
       it { is_expected.to be_owned_by 'www-data' }
     end
-    describe file('/data/resources') do
+    describe file('/vision/data/webshop/resources') do
       it { is_expected.to be_directory }
       it { is_expected.to be_owned_by 'www-data' }
     end
@@ -58,6 +59,18 @@ describe 'vision_webshop' do
       it { is_expected.to be_mode 750 }
       its(:content) { is_expected.to match 'webshop' }
       its(:content) { is_expected.to match 'rsync' }
+    end
+
+    describe file('/vision/data/swarm/webshop.yaml') do
+      it { is_expected.to be_file }
+      it { is_expected.to contain 'managed by Puppet' }
+      it { is_expected.to contain 'image: vision.fraunhofer.de/webshop:latest' }
+      it { is_expected.to contain '/vision/data/webshop/resources:/var/www/html/resources' }
+      it { is_expected.to contain 'DB_SOCK=/var/run/mysqld/mysqld.sock' }
+      it { is_expected.to contain 'DB_DATABASE=webshop' }
+      it { is_expected.to contain 'DB_USERNAME=foo_user' }
+      it { is_expected.to contain 'DB_PASSWORD=foo_password' }
+      it { is_expected.to contain 'FOO=BAR' }
     end
   end
 end

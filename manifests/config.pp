@@ -22,7 +22,7 @@ class vision_webshop::config (
     require => Class['::vision_jenkins::user'],
   }
 
-  file { ['/data', '/data/logs', '/data/resources']:
+  file { ['/vision/data/webshop', '/vision/data/webshop/logs', '/vision/data/webshop/resources']:
     ensure => directory,
     owner  => 'www-data',
     group  => 'www-data',

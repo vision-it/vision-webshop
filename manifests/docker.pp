@@ -13,22 +13,16 @@
 
 class vision_webshop::docker (
 
-  String $mysql_database  = $vision_webshop::mysql_database,
   String $mysql_password  = $vision_webshop::mysql_password,
   String $mysql_user      = $vision_webshop::mysql_user,
-  String $mysql_host      = $vision_webshop::mysql_host,
-  Integer $port           = $vision_webshop::port,
-  Array[String] $docker_volumes = $vision_webshop::docker_volumes,
   Array[String] $environment = $vision_webshop::environment,
 
 ) {
 
-  contain ::vision_docker
-
   if ($facts['webshop_tag'] == undef) {
     $webshop_tag = 'latest'
-    } else {
-      $webshop_tag = $facts['webshop_tag']
+  } else {
+    $webshop_tag = $facts['webshop_tag']
   }
 
   ::docker::image { 'webshop':
@@ -38,17 +32,30 @@ class vision_webshop::docker (
   }
 
   $docker_environment = concat([
-    "DB_HOST=${mysql_host}",
-    "DB_DATABASE=${mysql_database}",
+    'DB_SOCK=/var/run/mysqld/mysqld.sock',
+    'DB_DATABASE=webshop',
     "DB_USERNAME=${mysql_user}",
     "DB_PASSWORD=${mysql_password}",
   ], $environment)
 
-  ::docker::run { 'webshop':
-    image   => "registry.gitlab.cc-asp.fraunhofer.de:4567/vision-it/application/webshop:${webshop_tag}",
-    env     => $docker_environment,
-    ports   => [ "${port}:8080" ],
-    volumes => $docker_volumes,
+  $compose = {
+    'version' => '3.7',
+    'services' => {
+      'webshop' => {
+        'image'       => "registry.gitlab.cc-asp.fraunhofer.de:4567/vision-it/application/webshop:${webshop_tag}",
+        'volumes'     => [
+          '/var/run/mysqld/mysqld.sock:/var/run/mysqld/mysqld.sock',
+          '/vision/data/webshop/resources:/var/www/html/resources',
+          '/vision/data/webshop/logs:/var/www/html/logs',
+        ],
+        'environment' => $docker_environment,
+      }
+    }
+  }
+  # note: application runs on port 80
+
+  vision_docker::to_compose { 'webshop':
+    compose => $compose,
   }
 
 }
