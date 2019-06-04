@@ -25,12 +25,6 @@ class vision_webshop::docker (
     $webshop_tag = $facts['webshop_tag']
   }
 
-  ::docker::image { 'webshop':
-    ensure    => present,
-    image     => 'registry.gitlab.cc-asp.fraunhofer.de:4567/vision-it/application/webshop',
-    image_tag => $webshop_tag,
-  }
-
   $docker_environment = concat([
     'DB_SOCK=/var/run/mysqld/mysqld.sock',
     'DB_DATABASE=webshop',

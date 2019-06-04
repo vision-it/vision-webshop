@@ -19,7 +19,6 @@ class vision_webshop (
 
   ) {
 
-  contain ::vision_docker::swarm
   contain ::vision_mysql::mariadb
   contain ::vision_gluster::node
 
