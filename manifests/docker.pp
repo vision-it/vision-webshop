@@ -33,7 +33,7 @@ class vision_webshop::docker (
 
   ::docker::image { 'webshop':
     ensure    => present,
-    image     => 'vision.fraunhofer.de/webshop',
+    image     => 'registry.gitlab.cc-asp.fraunhofer.de:4567/vision-it/application/webshop',
     image_tag => $webshop_tag,
   }
 
@@ -45,7 +45,7 @@ class vision_webshop::docker (
   ], $environment)
 
   ::docker::run { 'webshop':
-    image   => "vision.fraunhofer.de/webshop:${webshop_tag}",
+    image   => "registry.gitlab.cc-asp.fraunhofer.de:4567/vision-it/application/webshop:${webshop_tag}",
     env     => $docker_environment,
     ports   => [ "${port}:80" ],
     volumes => $docker_volumes,
