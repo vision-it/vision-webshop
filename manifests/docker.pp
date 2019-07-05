@@ -43,6 +43,13 @@ class vision_webshop::docker (
           '/vision/data/webshop/logs:/var/www/html/logs',
         ],
         'environment' => $docker_environment,
+        'deploy' => {
+          labels => [
+            'traefik.port=80',
+            'traefik.frontend.rule=Host:shop.vision.fraunhofer.de',
+            'traefik.enable=true',
+          ],
+        },
       }
     }
   }
