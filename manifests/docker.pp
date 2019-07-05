@@ -26,7 +26,7 @@ class vision_webshop::docker (
   }
 
   $docker_environment = concat([
-    'DB_SOCK=/var/run/mysqld/mysqld.sock',
+    'DB_SOCKET=/var/run/mysqld/mysqld.sock',
     'DB_DATABASE=webshop',
     "DB_USERNAME=${mysql_user}",
     "DB_PASSWORD=${mysql_password}",
