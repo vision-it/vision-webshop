@@ -47,7 +47,7 @@ class vision_webshop::docker (
   ::docker::run { 'webshop':
     image   => "registry.gitlab.cc-asp.fraunhofer.de:4567/vision-it/application/webshop:${webshop_tag}",
     env     => $docker_environment,
-    ports   => [ "${port}:80" ],
+    ports   => [ "${port}:8080" ],
     volumes => $docker_volumes,
   }
 
