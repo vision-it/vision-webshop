@@ -15,11 +15,13 @@ class vision_webshop::config (
 
 ) {
 
-  contain ::vision_jenkins::user
+# currently not supported
+# because jenkins user already in ldap
+#  contain ::vision_jenkins::user
 
   vision_shipit::inotify { 'webshop_tag':
     group   => 'jenkins',
-    require => Class['::vision_jenkins::user'],
+#    require => Class['::vision_jenkins::user'],
   }
 
   file { ['/vision/data/webshop', '/vision/data/webshop/logs', '/vision/data/webshop/resources']:
