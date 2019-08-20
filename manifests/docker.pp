@@ -45,7 +45,7 @@ class vision_webshop::docker (
         'environment' => $docker_environment,
         'deploy' => {
           labels => [
-            'traefik.port=80',
+            'traefik.port=8080',
             'traefik.frontend.rule=Host:shop.vision.fraunhofer.de',
             'traefik.enable=true',
           ],
@@ -53,7 +53,7 @@ class vision_webshop::docker (
       }
     }
   }
-  # note: application runs on port 80
+  # note: application runs on port 8080
 
   vision_docker::to_compose { 'webshop':
     compose => $compose,

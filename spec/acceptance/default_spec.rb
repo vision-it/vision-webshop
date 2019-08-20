@@ -74,6 +74,7 @@ describe 'vision_webshop' do
       it { is_expected.to contain 'DB_USERNAME=foo_user' }
       it { is_expected.to contain 'DB_PASSWORD=foo_password' }
       it { is_expected.to contain 'FOO=BAR' }
+      it { is_expected.to contain 'traefik.port=8080' }
     end
   end
 end
