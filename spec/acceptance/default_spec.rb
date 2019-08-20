@@ -25,10 +25,8 @@ describe 'vision_webshop' do
         class vision_docker::swarm () {}
         class vision_mysql::mariadb () {}
         class vision_gluster::node () {}
-        class vision_jenkins::user () {
-          group { 'jenkins':
-            ensure => present,
-          }
+        group { 'jenkins':
+          ensure => present,
         }
 
         class { 'vision_webshop': }
@@ -67,9 +65,9 @@ describe 'vision_webshop' do
     describe file('/vision/data/swarm/webshop.yaml') do
       it { is_expected.to be_file }
       it { is_expected.to contain 'managed by Puppet' }
-      it { is_expected.to contain 'image: vision.fraunhofer.de/webshop:latest' }
+      it { is_expected.to contain 'image: registry.gitlab.cc-asp.fraunhofer.de:4567/vision-it/application/webshop:latest' }
       it { is_expected.to contain '/vision/data/webshop/resources:/var/www/html/resources' }
-      it { is_expected.to contain 'DB_SOCK=/var/run/mysqld/mysqld.sock' }
+      it { is_expected.to contain 'DB_SOCKET=/var/run/mysqld/mysqld.sock' }
       it { is_expected.to contain 'DB_DATABASE=webshop' }
       it { is_expected.to contain 'DB_USERNAME=foo_user' }
       it { is_expected.to contain 'DB_PASSWORD=foo_password' }
