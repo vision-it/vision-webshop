@@ -1,13 +1,4 @@
 ---
-vision_webshop::mysql_user: 'foobar'
-vision_webshop::mysql_password: 'foobar'
-vision_webshop::mysql_database: 'foobar'
-vision_webshop::mysql_root_password: 'foobar'
-vision_webshop::backup_password: 'foobar'
-vision_webshop::docker::mysql_user: 'foobar'
-vision_webshop::docker::mysql_password: 'foobar'
-vision_webshop::docker::mysql_database: 'foobar'
-vision_webshop::docker::mysql_host: 'foobar'
-vision_webshop::docker::port: 8080
-vision_webshop::docker::docker_volumes: []
+vision_webshop::mysql_user: 'foo_user'
+vision_webshop::mysql_password: 'foo_password'
 vision_webshop::docker::environment: ["FOO=BAR"]
