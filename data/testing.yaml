@@ -1,4 +1,5 @@
 ---
 vision_webshop::mysql_user: 'foo_user'
 vision_webshop::mysql_password: 'foo_password'
-vision_webshop::docker::environment: ["FOO=BAR"]
+vision_webshop::environment: ["FOO=BAR"]
+vision_webshop::traefik_rule: 'Host:example.com;PathPrefix:/webshop'

@@ -16,6 +16,7 @@ class vision_webshop::docker (
   String $mysql_password  = $vision_webshop::mysql_password,
   String $mysql_user      = $vision_webshop::mysql_user,
   Array[String] $environment = $vision_webshop::environment,
+  String $traefik_rule    = $vision_webshop::traefik_rule,
 
 ) {
 
@@ -46,7 +47,7 @@ class vision_webshop::docker (
         'deploy' => {
           'labels' => [
             'traefik.port=8080',
-            'traefik.frontend.rule=Host:shop.vision.fraunhofer.de',
+            "traefik.frontend.rule=${traefik_rule}",
             'traefik.enable=true',
           ],
         },
