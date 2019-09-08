@@ -44,7 +44,7 @@ class vision_webshop::docker (
         ],
         'environment' => $docker_environment,
         'deploy' => {
-          labels => [
+          'labels' => [
             'traefik.port=8080',
             'traefik.frontend.rule=Host:shop.vision.fraunhofer.de',
             'traefik.enable=true',
