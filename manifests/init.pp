@@ -21,7 +21,6 @@ class vision_webshop (
   ) {
 
   contain ::vision_mysql::mariadb
-  contain ::vision_gluster::node
 
   contain vision_webshop::config
   contain vision_webshop::database
