@@ -25,9 +25,6 @@ describe 'vision_webshop' do
         class vision_docker::swarm () {}
         class vision_mysql::mariadb () {}
         class vision_gluster::node () {}
-        group { 'jenkins':
-          ensure => present,
-        }
 
         class { 'vision_webshop': }
       FILE
@@ -36,9 +33,10 @@ describe 'vision_webshop' do
       apply_manifest(pp, catch_failures: true)
     end
   end
-  context 'Jenkins group and service' do
-    describe group('jenkins') do
+  context 'Shipit user and service' do
+    describe user('shipit') do
       it { is_expected.to exist }
+      it { is_expected.to have_uid 50_000 }
     end
     describe file('/etc/systemd/system/webshop_tag.service') do
       it { is_expected.to be_file }
