@@ -22,24 +22,18 @@ describe 'vision_webshop' do
 
         # mock classes
         class vision_webshop::database () {}
-        class vision_docker::swarm () {}
         class vision_mysql::mariadb () {}
         class vision_gluster::node () {}
+
+        class vision_shipit::user () {}
+        define vision_shipit::inotify (
+         String $group,
+        ) {}
 
         class { 'vision_webshop': }
       FILE
 
       apply_manifest(pp, catch_failures: true)
-      apply_manifest(pp, catch_failures: true)
-    end
-  end
-  context 'Shipit user and service' do
-    describe user('shipit') do
-      it { is_expected.to exist }
-      it { is_expected.to have_uid 50_000 }
-    end
-    describe file('/etc/systemd/system/webshop_tag.service') do
-      it { is_expected.to be_file }
     end
   end
 
