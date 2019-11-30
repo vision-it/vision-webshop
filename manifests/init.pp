@@ -15,6 +15,8 @@ class vision_webshop (
 
   String $mysql_password,
   String $mysql_user,
+  String $ldap_password,
+  String $ldap_host,
   Array[String] $environment = [],
   String $traefik_rule = 'Host:shop.vision.fraunhofer.de',
 

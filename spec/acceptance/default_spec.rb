@@ -61,6 +61,8 @@ describe 'vision_webshop' do
       it { is_expected.to contain '/vision/data/webshop/resources:/var/www/html/resources' }
       it { is_expected.to contain 'DB_SOCKET=/var/run/mysqld/mysqld.sock' }
       it { is_expected.to contain 'DB_DATABASE=webshop' }
+      it { is_expected.to contain 'LDAP_HOST=foo_host' }
+      it { is_expected.to contain 'LDAP_BIND_PASSWORD=foo_password' }
       it { is_expected.to contain 'DB_USERNAME=foo_user' }
       it { is_expected.to contain 'DB_PASSWORD=foo_password' }
       it { is_expected.to contain 'FOO=BAR' }
