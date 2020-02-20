@@ -19,8 +19,9 @@ class vision_webshop (
   String $ldap_host,
   Array[String] $environment = [],
   String $traefik_rule = 'Host:shop.vision.fraunhofer.de',
+  String $webshop_tag  = $facts['webshop_tag'],
 
-  ) {
+) {
 
   contain ::vision_mysql::mariadb
 
