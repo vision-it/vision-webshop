@@ -19,14 +19,9 @@ class vision_webshop::docker (
   String $ldap_host       = $vision_webshop::ldap_host,
   Array[String] $environment = $vision_webshop::environment,
   String $traefik_rule    = $vision_webshop::traefik_rule,
+  String $webshop_tag     = $vision_webshop::webshop_tag,
 
 ) {
-
-  if ($facts['webshop_tag'] == undef) {
-    $webshop_tag = 'latest'
-  } else {
-    $webshop_tag = $facts['webshop_tag']
-  }
 
   $docker_environment = concat([
     'DB_SOCKET=/var/run/mysqld/mysqld.sock',
