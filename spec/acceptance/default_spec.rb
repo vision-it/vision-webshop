@@ -66,8 +66,8 @@ describe 'vision_webshop' do
       it { is_expected.to contain 'DB_USERNAME=foo_user' }
       it { is_expected.to contain 'DB_PASSWORD=foo_password' }
       it { is_expected.to contain 'FOO=BAR' }
-      it { is_expected.to contain 'traefik.port=8080' }
-      it { is_expected.to contain 'traefik.frontend.rule=Host:example.com;PathPrefix:/webshop' }
+      it { is_expected.to contain 'traefik.http.routers.webshop.rule' }
+      it { is_expected.to contain 'Host(`example.com`) || PathPrefix(`/webshop`)' }
     end
   end
 end
