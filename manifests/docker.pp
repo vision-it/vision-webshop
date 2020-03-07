@@ -45,9 +45,11 @@ class vision_webshop::docker (
         'environment' => $docker_environment,
         'deploy' => {
           'labels' => [
-            'traefik.port=8080',
-            "traefik.frontend.rule=${traefik_rule}",
             'traefik.enable=true',
+            'traefik.http.services.webshop.loadbalancer.server.port=8080',
+            "traefik.http.routers.webshop.rule=${traefik_rule}",
+            'traefik.http.routers.webshop.entrypoints=https',
+            'traefik.http.routers.webshop.tls=true',
           ],
         },
       }
