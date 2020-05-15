@@ -57,7 +57,7 @@ describe 'vision_webshop' do
     describe file('/vision/data/swarm/webshop.yaml') do
       it { is_expected.to be_file }
       it { is_expected.to contain 'managed by Puppet' }
-      it { is_expected.to contain 'image: registry.gitlab.cc-asp.fraunhofer.de:4567/vision-it/application/webshop:latest' }
+      it { is_expected.to contain 'image: registry.gitlab.cc-asp.fraunhofer.de:4567/vision-it/application/webshop@latest' }
       it { is_expected.to contain '/vision/data/webshop/resources:/var/www/html/resources' }
       it { is_expected.to contain 'DB_SOCKET=/var/run/mysqld/mysqld.sock' }
       it { is_expected.to contain 'DB_DATABASE=webshop' }
