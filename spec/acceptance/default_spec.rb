@@ -12,6 +12,12 @@ describe 'vision_webshop' do
           ensure => present,
         }
 
+        file { '/usr/bin/docker':
+          ensure => file,
+          content => file('vision_webshop/testing/docker-dummy'),
+          mode   => '0755',
+        }
+
         # Just so that Puppet won't throw an error
        if($facts[os][distro][codename] != 'jessie') {
         file {['/etc/init.d/webshop_tag']:
