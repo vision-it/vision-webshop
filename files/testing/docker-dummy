@@ -1,0 +1,4 @@
+cat << EOF
+Client: Docker Engine - Community
+ Version:           19.03.8
+ EOF

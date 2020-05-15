@@ -19,9 +19,15 @@ class vision_webshop::docker (
   String $ldap_host       = $vision_webshop::ldap_host,
   Array[String] $environment = $vision_webshop::environment,
   String $traefik_rule    = $vision_webshop::traefik_rule,
-  String $webshop_tag     = $vision_webshop::webshop_tag,
+  String $webshop_digest  = $vision_webshop::webshop_tag,
 
 ) {
+
+  ::docker::image { 'webshop':
+    ensure       => present,
+    image        => 'registry.gitlab.cc-asp.fraunhofer.de:4567/vision-it/application/webshop',
+    image_digest => $webshop_digest,
+  }
 
   $docker_environment = concat([
     'DB_SOCKET=/var/run/mysqld/mysqld.sock',
@@ -36,7 +42,7 @@ class vision_webshop::docker (
     'version' => '3.7',
     'services' => {
       'webshop' => {
-        'image'       => "registry.gitlab.cc-asp.fraunhofer.de:4567/vision-it/application/webshop:${webshop_tag}",
+        'image'       => "registry.gitlab.cc-asp.fraunhofer.de:4567/vision-it/application/webshop@${webshop_digest}",
         'volumes'     => [
           '/var/run/mysqld/mysqld.sock:/var/run/mysqld/mysqld.sock',
           '/vision/data/webshop/resources:/var/www/html/resources',
