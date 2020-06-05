@@ -53,6 +53,8 @@ class vision_webshop::docker (
           'labels' => [
             'traefik.enable=true',
             'traefik.http.services.webshop.loadbalancer.server.port=8080',
+            'traefik.http.services.webshop.loadbalancer.sticky=true',
+            'traefik.http.services.webshop.loadbalancer.sticky.cookie.secure=true',
             "traefik.http.routers.webshop.rule=${traefik_rule}",
             'traefik.http.routers.webshop.entrypoints=https',
             'traefik.http.routers.webshop.tls=true',
