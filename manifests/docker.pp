@@ -50,6 +50,7 @@ class vision_webshop::docker (
         ],
         'environment' => $docker_environment,
         'deploy' => {
+          'mode'   => 'global',
           'labels' => [
             'traefik.enable=true',
             'traefik.http.services.webshop.loadbalancer.server.port=8080',
