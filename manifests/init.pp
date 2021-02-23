@@ -18,7 +18,7 @@ class vision_webshop (
   String $ldap_password,
   String $ldap_host,
   Array[String] $environment = [],
-  String $traefik_rule = 'Host(`shop.vision.fraunhofer.de`)',
+  String $traefik_rule = 'Host(`shop.vision.fraunhofer.de`)||Host(`shop.vision.fhg.de`)',
   String $webshop_tag  = $facts['webshop_tag'],
 
 ) {
