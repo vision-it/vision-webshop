@@ -17,6 +17,7 @@ class vision_webshop::docker (
   String $mysql_user      = $vision_webshop::mysql_user,
   String $ldap_password   = $vision_webshop::ldap_password,
   String $ldap_host       = $vision_webshop::ldap_host,
+  String $ldap_base_dn    = $vision_webshop::ldap_base_dn,
   Array[String] $environment = $vision_webshop::environment,
   String $traefik_rule    = $vision_webshop::traefik_rule,
   String $webshop_digest  = $vision_webshop::webshop_tag,
@@ -35,6 +36,7 @@ class vision_webshop::docker (
     "DB_USERNAME=${mysql_user}",
     "DB_PASSWORD=${mysql_password}",
     "LDAP_BIND_PASSWORD=${ldap_password}",
+    "LDAP_BASE_DN=${ldap_base_dn}",
     "LDAP_HOST=${ldap_host}",
   ], $environment)
 
