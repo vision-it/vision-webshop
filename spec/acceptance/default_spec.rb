@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper_acceptance'
 
 describe 'vision_webshop' do
@@ -48,10 +50,6 @@ describe 'vision_webshop' do
       it { is_expected.to be_directory }
       it { is_expected.to be_owned_by 'www-data' }
     end
-    describe file('/vision/data/webshop/resources') do
-      it { is_expected.to be_directory }
-      it { is_expected.to be_owned_by 'www-data' }
-    end
     describe file('/usr/local/sbin/sync-webshop.sh') do
       it { is_expected.to be_file }
       it { is_expected.to be_owned_by 'root' }
@@ -59,7 +57,6 @@ describe 'vision_webshop' do
       its(:content) { is_expected.to match 'webshop' }
       its(:content) { is_expected.to match 'rsync' }
     end
-
     describe file('/vision/data/swarm/webshop.yaml') do
       it { is_expected.to be_file }
       it { is_expected.to contain 'managed by Puppet' }
@@ -68,6 +65,7 @@ describe 'vision_webshop' do
       it { is_expected.to contain 'DB_SOCKET=/var/run/mysqld/mysqld.sock' }
       it { is_expected.to contain 'DB_DATABASE=webshop' }
       it { is_expected.to contain 'LDAP_HOST=foo_host' }
+      it { is_expected.to contain 'LDAP_BASE_DN=cn=users' }
       it { is_expected.to contain 'LDAP_BIND_PASSWORD=foo_password' }
       it { is_expected.to contain 'DB_USERNAME=foo_user' }
       it { is_expected.to contain 'DB_PASSWORD=foo_password' }
