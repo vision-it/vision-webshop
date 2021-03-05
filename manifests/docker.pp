@@ -26,7 +26,7 @@ class vision_webshop::docker (
 
   ::docker::image { 'webshop':
     ensure       => present,
-    image        => 'registry.gitlab.cc-asp.fraunhofer.de:4567/vision-it/application/webshop',
+    image        => 'registry.gitlab.cc-asp.fraunhofer.de:4567/vision-it/application/apfshop',
     image_digest => $webshop_digest,
   }
 
@@ -44,7 +44,7 @@ class vision_webshop::docker (
     'version' => '3.7',
     'services' => {
       'webshop' => {
-        'image'       => "registry.gitlab.cc-asp.fraunhofer.de:4567/vision-it/application/webshop@${webshop_digest}",
+        'image'       => "registry.gitlab.cc-asp.fraunhofer.de:4567/vision-it/application/apfshop@${webshop_digest}",
         'volumes'     => [
           '/var/run/mysqld/mysqld.sock:/var/run/mysqld/mysqld.sock',
           '/vision/data/webshop/resources:/var/www/html/resources',
