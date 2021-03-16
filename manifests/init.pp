@@ -24,10 +24,10 @@ class vision_webshop (
 
 ) {
 
-  contain ::vision_mysql::mariadb
+  # contain ::vision_mysql::mariadb
 
   contain vision_webshop::config
-  contain vision_webshop::database
+  # contain vision_webshop::database
   contain vision_webshop::docker
 
 }
